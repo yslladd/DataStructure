@@ -6,6 +6,8 @@ using Problems.DataStructure.Tests.Fibonacci;
 using System.Collections.Generic;
 using Problems.DataStructure.Tests.Leetcode.Arrays;
 using Problems.DataStructure.Tests.OddNumbers;
+using System.Xml;
+using Problems.DataStructure.Tests.Leetcode.LinkedList;
 
 namespace Problems.DataStructure.Tests
 {
@@ -20,7 +22,7 @@ namespace Problems.DataStructure.Tests
         {
             // Create a sample binary tree
             Node root = new Node(20);
-            
+
             root.Right = new Node(25);
             root.Right.Parent = new Node(20);
 
@@ -44,7 +46,7 @@ namespace Problems.DataStructure.Tests
 
             Console.WriteLine("Print the next max node:");
             var current = BinaryTreeClass.PrintNexMaxNode(root.Left.Right.Right); // 12. Result: 14
-            Console.Write($"-> {current.Data}");          
+            Console.Write($"-> {current.Data}");
         }
 
 
@@ -53,7 +55,7 @@ namespace Problems.DataStructure.Tests
         /// </summary>
         [TestMethod]
         public void BinaryTree()
-        {            
+        {
             // Create a sample binary tree
             Node root = new Node(1);
             root.Left = new Node(2);
@@ -83,7 +85,7 @@ namespace Problems.DataStructure.Tests
         /// N is an integer within the range [1..2,147,483,647]         
         /// </summary>
         /// <param name="n"></param>
-        [TestMethod]        
+        [TestMethod]
         public void GetBinaryGapFromAnInteger()
         {
             int num = 529; //1000010001
@@ -122,7 +124,7 @@ namespace Problems.DataStructure.Tests
         {
             int odd = OddNumbersClass.OddOccurrencesInArrayAnswer2();
             Console.Write(odd);
-        }       
+        }
 
         [TestMethod]
         public void OddOccurrencesInArrayGPT()
@@ -130,13 +132,13 @@ namespace Problems.DataStructure.Tests
             // GPT 3.5
             int result = OddNumbersClass.OddOccurrencesInArrayAnswer();
             Console.Write(result);
-        }       
+        }
 
         [TestMethod]
         [DataRow(1)]
         [DataRow(7, 1, 5, 3, 6, 4)]
         [DataRow(2, 1, 4)]
-        [DataRow(2, 4, 1)]        
+        [DataRow(2, 4, 1)]
         public void BestTimeBuysSellStock(params int[] prices)
         {
             int result = BestTimeBuySellStock.MaxProfit(prices);
@@ -145,17 +147,17 @@ namespace Problems.DataStructure.Tests
 
 
         [TestMethod]
-        [DataRow(1,2,3,1)]
-        [DataRow(1,2,3,4)]
+        [DataRow(1, 2, 3, 1)]
+        [DataRow(1, 2, 3, 4)]
         [DataRow(1, 1, 1, 3, 3, 4, 3, 2, 4, 2)]
         public void ContainsDuplicateTest(params int[] nums)
         {
             bool result = ContainsDuplicate.ContainsDuplicateNumbers(nums);
-            Console.WriteLine(result);        
+            Console.WriteLine(result);
         }
 
-        [TestMethod]        
-        [DataRow(1, 2, 3, 4)]        
+        [TestMethod]
+        [DataRow(1, 2, 3, 4)]
         public void ProductOfArrayExceptSelfTest(params int[] nums)
         {
             int[] result = ProductOfArrayExceptSelf.ProductOfArrayExceptSelfAnswer(nums);
@@ -174,15 +176,27 @@ namespace Problems.DataStructure.Tests
 
 
         [TestMethod]
-        [DataRow(-1, 0, 1, 2, -1, -4)]        
+        [DataRow(-1, 0, 1, 2, -1, -4)]
         public void ThreeSumTest(params int[] nums)
         {
             IList<IList<int>> result = ThreeSum.ThreeSumAnswer(nums);
             Console.WriteLine(result);
-        }       
+        }
 
+        [TestMethod]
+        public void ReverseLinkedListTest()
+        {
+            ListNode listNode = new ListNode(1, 
+                new ListNode(2, 
+                    new ListNode(3, 
+                        new ListNode(4, 
+                            new ListNode(5)))));
+
+            var result = ReverseLinkedList.ReverseList(listNode);            
+            Console.WriteLine(result);
+        }
 
     }
 
-    
+
 }
